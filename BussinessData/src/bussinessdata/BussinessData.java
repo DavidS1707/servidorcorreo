@@ -27,9 +27,9 @@ public class BussinessData {
     public static void user() {
         BUsuario bUsuario = new BUsuario();
         List<String> user = new ArrayList<String>();
-        user.add("David");//nombre
-        user.add("Suarez");//apellido
-        user.add("davsuar2000@gmail.com");//correo
+        user.add("Luishiño");//nombre
+        user.add("Pericena");//apellido
+        user.add("luishino@gmail.com");//correo
         user.add("123456");//contraseña
         user.add("30");//puntos
         user.add("1");//id del rol

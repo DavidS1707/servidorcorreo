@@ -98,6 +98,27 @@ public class Interpreter implements Runnable {
             case Token.PRODUCTO:
                 listener.producto(token_event);
                 break;
+            case Token.CONTENIDO:
+                listener.contenido(token_event);
+                break;
+            case Token.ESTADISTICA:
+                listener.estadistica(token_event);
+                break;
+            case Token.NOTICIA:
+                listener.noticia(token_event);
+                break;
+            case Token.PAGO:
+                listener.pago(token_event);
+                break;
+            case Token.PRESENTADOR:
+                listener.presentador(token_event);
+                break;
+            case Token.PROYECTO:
+                listener.proyecto(token_event);
+                break;
+            case Token.SUSCRIPCION:
+                listener.suscripcion(token_event);
+                break;
 
         }
 

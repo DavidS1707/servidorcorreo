@@ -9,5 +9,5 @@ package bussiness;
  * @author suarez
  */
 public class BContenido {
-
+// LO DEJAMOS PARA LA PARTE WEB
 }

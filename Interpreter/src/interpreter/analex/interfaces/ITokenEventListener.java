@@ -37,5 +37,18 @@ public interface ITokenEventListener {
     void producto(TokenEvent event);
 
     void error(TokenEvent event);
-    //agregar mas casos de uso
+
+    void contenido(TokenEvent event);
+
+    void estadistica(TokenEvent event);
+
+    void noticia(TokenEvent event);
+
+    void pago(TokenEvent event);
+
+    void presentador(TokenEvent event);
+
+    void proyecto(TokenEvent event);
+
+    void suscripcion(TokenEvent event);
 }

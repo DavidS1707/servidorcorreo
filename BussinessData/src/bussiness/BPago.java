@@ -4,10 +4,41 @@
  */
 package bussiness;
 
+import data.DTipoPago;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author suarez
  */
 public class BPago {
 
+    private DTipoPago dTipoPago;
+
+    public BPago() {
+        dTipoPago = new DTipoPago();
+    }
+
+    public void create(List<String> parametros) throws SQLException {
+        dTipoPago.create(parametros.get(0), parametros.get(1));
+        dTipoPago.disconnect();
+    }
+
+    public void edit(List<String> parametros) throws SQLException {
+        dTipoPago.edit(Integer.parseInt(parametros.get(0)), parametros.get(1), parametros.get(2));
+        dTipoPago.disconnect();
+    }
+
+    public void delete(List<String> parametros) throws SQLException {
+        dTipoPago.delete(Integer.parseInt(parametros.get(0)));
+        dTipoPago.disconnect();
+    }
+
+    public List<String[]> show() throws SQLException {
+        ArrayList<String[]> pagos = (ArrayList<String[]>) dTipoPago.show();
+        dTipoPago.disconnect();
+        return pagos;
+    }
 }

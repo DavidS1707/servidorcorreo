@@ -32,7 +32,7 @@ public class SqlConnection {
         try {
             connection = DriverManager.getConnection(url, user, password);
         } catch (SQLException ex) {
-            System.err.print("Class SQLConnection.java: Error al intentar establecer una conexion. ");
+            System.err.print("Class SQLConnection.java: Error al intentar establecer una conexion. " + ex);
         }
         return connection;
     }

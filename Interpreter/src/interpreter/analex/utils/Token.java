@@ -34,6 +34,13 @@ public class Token {
     public static final int APARTMENT = 109;
     public static final int USUARIO = 110;
     public static final int PRODUCTO = 111;
+    public static final int CONTENIDO = 112;
+    public static final int ESTADISTICA = 113;
+    public static final int NOTICIA = 114;
+    public static final int PAGO = 115;
+    public static final int PRESENTADOR = 116;
+    public static final int PROYECTO = 117;
+    public static final int SUSCRIPCION = 118;
 
     //ajustar de acuerdo a sus acciones con valores entre 200 a 299
     //Titulos de las acciones generales
@@ -70,6 +77,13 @@ public class Token {
     public static final String LEXEME_APARTMENT = "apartment";
     public static final String LEXEME_USUARIO = "usuario";
     public static final String LEXEME_PRODUCTO = "producto";
+    public static final String LEXEME_CONTENIDO = "contenido";
+    public static final String LEXEME_ESTADISTICA = "estadistica";
+    public static final String LEXEME_NOTICIA = "noticia";
+    public static final String LEXEME_PAGO = "pago";
+    public static final String LEXEME_PRESENTADOR = "presentador";
+    public static final String LEXEME_PROYECTO = "proyecto";
+    public static final String LEXEME_SUSCRIPCION = "suscripcion";
 
     //ajustar de acuerdo a sus acciones con valores en string
     //Titulos de las acciones generales en string
@@ -214,6 +228,20 @@ public class Token {
                 return LEXEME_USUARIO;
             case PRODUCTO:
                 return LEXEME_PRODUCTO;
+            case CONTENIDO:
+                return LEXEME_CONTENIDO;
+            case ESTADISTICA:
+                return LEXEME_ESTADISTICA;
+            case NOTICIA:
+                return LEXEME_NOTICIA;
+            case PAGO:
+                return LEXEME_PAGO;
+            case PRESENTADOR:
+                return LEXEME_PRESENTADOR;
+            case PROYECTO:
+                return LEXEME_PROYECTO;
+            case SUSCRIPCION:
+                return LEXEME_SUSCRIPCION;
 
             //ACCION
             case ADD:
@@ -288,6 +316,20 @@ public class Token {
                 return USUARIO;
             case LEXEME_PRODUCTO:
                 return PRODUCTO;
+            case LEXEME_CONTENIDO:
+                return CONTENIDO;
+            case LEXEME_NOTICIA:
+                return NOTICIA;
+            case LEXEME_ESTADISTICA:
+                return ESTADISTICA;
+            case LEXEME_PAGO:
+                return PAGO;
+            case LEXEME_PRESENTADOR:
+                return PRESENTADOR;
+            case LEXEME_PROYECTO:
+                return PROYECTO;
+            case LEXEME_SUSCRIPCION:
+                return SUSCRIPCION;
 
             //ACTION    
             case LEXEME_ADD:
