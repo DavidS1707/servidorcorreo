@@ -9,6 +9,7 @@ import bussiness.BUsuario;
 import communication.MailVerificationThread;
 import communication.SendEmailThread;
 import data.DUsuario;
+import Interfaces.IEmailEventListener;
 import interpreter.analex.Interpreter;
 import interpreter.analex.interfaces.ITokenEventListener;
 import interpreter.analex.utils.Token;
