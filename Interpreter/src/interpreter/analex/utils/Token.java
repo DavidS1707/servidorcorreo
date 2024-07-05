@@ -230,6 +230,8 @@ public class Token {
                 return LEXEME_CANCEL;
             case REPORT:
                 return LEXEME_REPORT;
+            case AGREGAR:
+                return LEXEME_AGREGAR;
 
             case ERROR_COMMAND:
                 return LEXEME_ERROR_COMMAND;

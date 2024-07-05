@@ -8,6 +8,7 @@ package interpreter.analex.utils;
  *
  * @author suarez
  */
+//NO TOCAR
 public class Utils {
 
     public static String FieldLeft(String S, int Ancho) { //Devuelve S con Ancho caracteres (padding derecho con espacios).  (Padding singnifica "relleno").

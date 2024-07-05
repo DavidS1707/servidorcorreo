@@ -8,6 +8,7 @@ package interpreter.analex.utils;
  *
  * @author suarez
  */
+//NO TOCAR
 public class Cinta {
 
     public static final char EOF = 0;

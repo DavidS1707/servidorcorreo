@@ -13,6 +13,7 @@ import java.util.List;
  *
  * @author suarez
  */
+//NO TOCAR
 public class TokenEvent extends EventObject {
 
     private int action;// accion del caso de uso: add. modify, delete y otros
@@ -87,7 +88,7 @@ public class TokenEvent extends EventObject {
     public String toString() {
         Token token = new Token();
         String s = "";
-        s = s + "Remitente= " + sender + "\n";
+        s = s + "From= " + sender + "\n";
         s = s + "Action= " + token.getStringToken(action) + "\n";
         s = s + "Params= \n";
         for (String param : params) {

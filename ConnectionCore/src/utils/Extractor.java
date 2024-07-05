@@ -18,7 +18,14 @@ public class Extractor {
         return new Email(getFrom(plain_text), getSubject(plain_text));
     }
 
-    public static String getFrom(String plain_text) {
+    private static String getFrom(String plain_text) {
+        String search = "Return-Path: <";
+        int index_begin = plain_text.indexOf(search) + search.length();
+        int index_end = plain_text.indexOf(">");
+        return plain_text.substring(index_begin, index_end);
+    }
+
+    private static String getTo(String plain_text) {
         String to = "";
         if (plain_text.contains(GMAIL)) {
             to = getToFromGmail(plain_text);

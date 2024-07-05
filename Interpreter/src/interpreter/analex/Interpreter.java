@@ -13,7 +13,7 @@ import interpreter.events.TokenEvent;
  *
  * @author suarez
  */
-public class Interpreter {
+public class Interpreter implements Runnable {
 
     private ITokenEventListener listener;
     private Analex analex;

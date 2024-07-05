@@ -10,6 +10,7 @@ import java.util.ArrayList;
  *
  * @author suarez
  */
+//NO TOCAR
 public class TSParams {
 
     private static String TITLE = "TSParams";

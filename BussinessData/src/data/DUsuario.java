@@ -27,7 +27,7 @@ public class DUsuario {
     //id, name, last_name, email, password, point
     public void create(String name, String last_name, String email, String password, int point, int rol_id) throws SQLException {
         //DEFINIR LA LOGICA PARA REGISTRAR EL rol_id DEL USUARIO
-        String query = "INSERT INTO User(name, last_name, email, password, point, rol_id)" + "values(?,?,?,?,?, ?)";
+        String query = "INSERT INTO \"User\"(name, last_name, email, password, point, rol_id)" + "values(?,?,?,?,?, ?)";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, name);
         ps.setString(2, last_name);
