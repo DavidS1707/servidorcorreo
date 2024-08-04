@@ -22,25 +22,15 @@ public class Token {
 
     // ajustar de acuerdo a sus casos de uso con valores entre 100 a 199
     //Titulos de casos de uso en numero
-    public static final int USER = 100;
-    public static final int CLIENT = 101;
-    public static final int DPTO = 102;
-    public static final int SOCIAL = 103;
-    public static final int SCHEDULE = 104;
-    public static final int NOTIFY = 105;
-    public static final int VISIT = 106;
-    public static final int SUPPORT = 107;
-    public static final int RESERVE = 108;
-    public static final int APARTMENT = 109;
-    public static final int USUARIO = 110;
-    public static final int PRODUCTO = 111;
-    public static final int CONTENIDO = 112;
-    public static final int ESTADISTICA = 113;
-    public static final int NOTICIA = 114;
-    public static final int PAGO = 115;
-    public static final int PRESENTADOR = 116;
-    public static final int PROYECTO = 117;
-    public static final int SUSCRIPCION = 118;
+    public static final int HELP = 100;
+    public static final int USUARIO = 101;
+    public static final int CONTENIDO = 102;
+    public static final int ESTADISTICA = 103;
+    public static final int NOTICIA = 104;
+    public static final int PAGO = 105;
+    public static final int PRESENTADOR = 106;
+    public static final int PROYECTO = 107;
+    public static final int SUSCRIPCION = 108;
 
     //ajustar de acuerdo a sus acciones con valores entre 200 a 299
     //Titulos de las acciones generales
@@ -51,7 +41,13 @@ public class Token {
     public static final int VERIFY = 204;
     public static final int CANCEL = 205;
     public static final int REPORT = 206;
+
     public static final int AGREGAR = 207;
+    public static final int ELIMINAR = 208;
+    public static final int MODIFICAR = 209;
+    public static final int LISTAR = 210;
+    public static final int GRAFICA = 211;
+    public static final int VER = 212;
 
     public static final int ERROR_COMMAND = 300;
     public static final int ERROR_CHARACTER = 301;
@@ -65,18 +61,8 @@ public class Token {
 
     // ajustar de acuerdo a sus casos de uso con valores en string
     //Titulos de casos de uso con string
-    public static final String LEXEME_USER = "user";
-    public static final String LEXEME_CLIENT = "client";
-    public static final String LEXEME_DPTO = "dpto";
-    public static final String LEXEME_SOCIAL = "social";
-    public static final String LEXEME_SCHEDULE = "schedule";
-    public static final String LEXEME_NOTIFY = "notify";
-    public static final String LEXEME_VISIT = "visit";
-    public static final String LEXEME_SUPPORT = "support";
-    public static final String LEXEME_RESERVE = "reserve";
-    public static final String LEXEME_APARTMENT = "apartment";
+    public static final String LEXEME_HELP = "help";
     public static final String LEXEME_USUARIO = "usuario";
-    public static final String LEXEME_PRODUCTO = "producto";
     public static final String LEXEME_CONTENIDO = "contenido";
     public static final String LEXEME_ESTADISTICA = "estadistica";
     public static final String LEXEME_NOTICIA = "noticia";
@@ -94,7 +80,13 @@ public class Token {
     public static final String LEXEME_VERIFY = "verify";
     public static final String LEXEME_CANCEL = "cancel";
     public static final String LEXEME_REPORT = "report";
+
     public static final String LEXEME_AGREGAR = "agregar";
+    public static final String LEXEME_ELIMINAR = "eliminar";
+    public static final String LEXEME_MODIFICAR = "modificar";
+    public static final String LEXEME_LISTAR = "listar";
+    public static final String LEXEME_GRAFICA = "graficar";
+    public static final String LEXEME_VER = "ver";
 
     public static final String LEXEME_ERROR_COMMAND = "UNKNOWN COMMAND";
     public static final String LEXEME_ERROR_CHARACTER = "UNKNOWN CHARACTER";
@@ -204,30 +196,10 @@ public class Token {
                 return LEXEME_ERROR;
 
             //CU
-            case USER:
-                return LEXEME_USER;
-            case CLIENT:
-                return LEXEME_CLIENT;
-            case DPTO:
-                return LEXEME_DPTO;
-            case SOCIAL:
-                return LEXEME_SOCIAL;
-            case SCHEDULE:
-                return LEXEME_SCHEDULE;
-            case NOTIFY:
-                return LEXEME_NOTIFY;
-            case VISIT:
-                return LEXEME_VISIT;
-            case SUPPORT:
-                return LEXEME_SUPPORT;
-            case RESERVE:
-                return LEXEME_RESERVE;
-            case APARTMENT:
-                return LEXEME_APARTMENT;
+            case HELP:
+                return LEXEME_HELP;
             case USUARIO:
                 return LEXEME_USUARIO;
-            case PRODUCTO:
-                return LEXEME_PRODUCTO;
             case CONTENIDO:
                 return LEXEME_CONTENIDO;
             case ESTADISTICA:
@@ -260,6 +232,16 @@ public class Token {
                 return LEXEME_REPORT;
             case AGREGAR:
                 return LEXEME_AGREGAR;
+            case ELIMINAR:
+                return LEXEME_ELIMINAR;
+            case MODIFICAR:
+                return LEXEME_MODIFICAR;
+            case LISTAR:
+                return LEXEME_LISTAR;
+            case GRAFICA:
+                return LEXEME_GRAFICA;
+            case VER:
+                return LEXEME_VER;
 
             case ERROR_COMMAND:
                 return LEXEME_ERROR_COMMAND;
@@ -292,30 +274,10 @@ public class Token {
                 return ERROR;
 
             //CU 
-            case LEXEME_USER:
-                return USER;
-            case LEXEME_CLIENT:
-                return CLIENT;
-            case LEXEME_DPTO:
-                return DPTO;
-            case LEXEME_SOCIAL:
-                return SOCIAL;
-            case LEXEME_SCHEDULE:
-                return SCHEDULE;
-            case LEXEME_NOTIFY:
-                return NOTIFY;
-            case LEXEME_VISIT:
-                return VISIT;
-            case LEXEME_SUPPORT:
-                return SUPPORT;
-            case LEXEME_RESERVE:
-                return RESERVE;
-            case LEXEME_APARTMENT:
-                return APARTMENT;
+            case LEXEME_HELP:
+                return HELP;
             case LEXEME_USUARIO:
                 return USUARIO;
-            case LEXEME_PRODUCTO:
-                return PRODUCTO;
             case LEXEME_CONTENIDO:
                 return CONTENIDO;
             case LEXEME_NOTICIA:
@@ -348,6 +310,16 @@ public class Token {
                 return REPORT;
             case LEXEME_AGREGAR:
                 return AGREGAR;
+            case LEXEME_ELIMINAR:
+                return ELIMINAR;
+            case LEXEME_MODIFICAR:
+                return MODIFICAR;
+            case LEXEME_LISTAR:
+                return LISTAR;
+            case LEXEME_GRAFICA:
+                return GRAFICA;
+            case LEXEME_VER:
+                return VER;
 
             case LEXEME_ERROR_COMMAND:
                 return ERROR_COMMAND;

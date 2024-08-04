@@ -62,41 +62,11 @@ public class Interpreter implements Runnable {
 
         //ajustar de acuerdo a su casos de uso
         switch (token_command.getName()) {
-            case Token.USER:
-                listener.user(token_event);
-                break;
-            case Token.CLIENT:
-                listener.client(token_event);
-                break;
-            case Token.DPTO:
-                listener.dpto(token_event);
-                break;
-            case Token.SOCIAL:
-                listener.social(token_event);
-                break;
-            case Token.SCHEDULE:
-                listener.schedule(token_event);
-                break;
-            case Token.NOTIFY:
-                listener.notify(token_event);
-                break;
-            case Token.VISIT:
-                listener.visit(token_event);
-                break;
-            case Token.SUPPORT:
-                listener.support(token_event);
-                break;
-            case Token.RESERVE:
-                listener.reserve(token_event);
-                break;
-            case Token.APARTMENT:
-                listener.apartment(token_event);
+            case Token.HELP:
+                listener.help(token_event);
                 break;
             case Token.USUARIO:
                 listener.usuario(token_event);
-                break;
-            case Token.PRODUCTO:
-                listener.producto(token_event);
                 break;
             case Token.CONTENIDO:
                 listener.contenido(token_event);

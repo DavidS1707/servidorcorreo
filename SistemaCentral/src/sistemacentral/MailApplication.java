@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import utils.Email;
 import Utils.HtmlBuilder;
+import bussiness.BComando;
 import bussiness.BContenido;
 import bussiness.BEstadistica;
 import bussiness.BNoticia;
@@ -27,6 +28,7 @@ import bussiness.BPago;
 import bussiness.BPresentador;
 import bussiness.BProyecto;
 import bussiness.BSuscripcion;
+import data.DComando;
 import interpreter.Main;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,18 +46,21 @@ public class MailApplication {
     private static final int AUTHORIZATION_ERROR = -6;
 
     private MailVerificationThread mailVerificationThread;
+
     private BUsuario bUsuario;
     private BContenido bContenido;
     private BEstadistica bEstadistica;
     private BNoticia bNoticia;
     private BPago bPago;
     private BPresentador bPresentador;
+    private BComando bComando;
     private BProyecto bProyecto;
     private BSuscripcion bSuscripcion;
 
     public MailApplication() {
         mailVerificationThread = new MailVerificationThread();
         mailVerificationThread.setEmailEventListener((IEmailEventListener) MailApplication.this);
+
         bUsuario = new BUsuario();
         bContenido = new BContenido();
         bEstadistica = new BEstadistica();
@@ -79,6 +84,19 @@ public class MailApplication {
             Thread thread = new Thread(interpreter);
             thread.setName("Interpreter Thread");
             thread.start();
+        }
+    }
+
+    public void help(TokenEvent event) {
+        System.out.println("HELP");
+        try {
+            tableNotifySuccess(event.getSender(), "Lista de Comandos", DComando.HEADERS, bComando.listar());
+        } catch (SQLException ex) {
+            handleError(CONSTRAINTS_ERROR, event.getSender(), null);
+        } catch (NumberFormatException ex) {
+            handleError(NUMBER_FORMAT_ERROR, event.getSender(), null);
+        } catch (IndexOutOfBoundsException ex) {
+            handleError(INDEX_OUT_OF_BOUND_ERROR, event.getSender(), null);
         }
     }
 

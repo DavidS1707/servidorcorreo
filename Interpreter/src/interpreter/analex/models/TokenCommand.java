@@ -11,6 +11,7 @@ import java.util.List;
  *
  * @author suarez
  */
+//NO TOCAR
 public class TokenCommand {
 
     private int name; // CASO DE USO

@@ -12,26 +12,6 @@ import interpreter.events.TokenEvent;
  */
 public interface ITokenEventListener {
 
-    void user(TokenEvent event);
-
-    void client(TokenEvent event);
-
-    void dpto(TokenEvent event);
-
-    void social(TokenEvent event);
-
-    void schedule(TokenEvent event);
-
-    void notify(TokenEvent event);
-
-    void apartment(TokenEvent event);
-
-    void visit(TokenEvent event);
-
-    void support(TokenEvent event);
-
-    void reserve(TokenEvent event);
-
     void usuario(TokenEvent event);
 
     void producto(TokenEvent event);
@@ -51,4 +31,6 @@ public interface ITokenEventListener {
     void proyecto(TokenEvent event);
 
     void suscripcion(TokenEvent event);
+
+    void help(TokenEvent token_event);
 }

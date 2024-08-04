@@ -40,7 +40,7 @@ public class Main {
         //COMANDO PARA AGREGAR UN USUARIO
         //String comando = "usuario agregar [Pedro; Martinez; pedrito@gmail.com; 123456; 30; 2] ";
         //COMANDO PARA VER LOS USUARIOS
-        String comando = "usuario get ";
+        String comando = "noticia get ";
         String correo = "davsuar2000@gmail.com";
         /*
         //{Firulay, 25, Negro} //
@@ -102,55 +102,10 @@ public class Main {
         BSuscripcion bSuscripcion = new BSuscripcion();
 
         Interpreter interpreter = new Interpreter(comando, correo);
+
         interpreter.setListener(new ITokenEventListener() {
             @Override
-            public void user(TokenEvent event) {
-                System.out.println("CU: USER");
-                System.out.println(event);
-            }
-
-            @Override
-            public void client(TokenEvent event) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void dpto(TokenEvent event) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void social(TokenEvent event) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void schedule(TokenEvent event) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void notify(TokenEvent event) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void apartment(TokenEvent event) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void visit(TokenEvent event) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void support(TokenEvent event) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void reserve(TokenEvent event) {
+            public void help(TokenEvent event) {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
@@ -190,34 +145,12 @@ public class Main {
                 }
             }
 
-//            @Override
-//            public void producto(TokenEvent event) {
-//                System.out.println("CU: MASCOTA");
-//                System.out.println(event);
-//                if (event.getAction() == Token.AGREGAR) {
-//                    bProducto.guardar(event.getParams(), event.getSender());
-//                    System.out.println("OK");
-//                    //notificar al usuario que se ejecuto su comando
-//                } else if (event.getAction() == Token.MODIFY) {
-//                    
-//                } else if (event.getAction() == Token.DELETE) {
-//                    
-//                } else {
-//                    System.out.println("La accion no es valida para el caso de uso");
-//                    //enviar al correo una notificacion
-//                } //enviar notificacion de error
-//            }
             @Override
             public void error(TokenEvent event) {
                 System.out.println("ERROR DESCONOCIDO");
                 System.out.println(event.getAction());
                 System.out.println(event);
                 //enviar una notificacion
-            }
-
-            @Override
-            public void producto(TokenEvent event) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
 
             @Override
@@ -432,6 +365,11 @@ public class Main {
 //                    System.out.println("Mensaje: " + ex.getSQLState());
 //                    //enviar notificacion de error
 //                }
+            }
+
+            @Override
+            public void producto(TokenEvent event) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
 
