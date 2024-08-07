@@ -20,16 +20,16 @@ public class DRol {
     private SqlConnection connection;
 
     public DRol() {
-        connection = new SqlConnection("grupo23sa", "grup023grup023", "mail.tecnoweb.org.bo",
+        connection = new SqlConnection("grupo23sa", "grup023grup023*", "mail.tecnoweb.org.bo",
                 "5432", "db_grupo23sa");
     }
 
     // metodo para crear un Rol
-    public void create(String name, String description) throws SQLException {
-        String query = "INSERT INTO Rol(name, description) values(?,?)";
+    public void create(String name, String guard_name) throws SQLException {
+        String query = "INSERT INTO roles(name, guard_name) values(?,?)";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, name);
-        ps.setString(2, description);
+        ps.setString(2, guard_name);
 
         if (ps.executeUpdate() == 0) {
             System.err.print("Class DRol.java: Error al intentar crear un Rol. create(). ");
@@ -38,11 +38,11 @@ public class DRol {
     }
 
     // metodo para editar un Rol
-    public void edit(int id, String name, String description) throws SQLException {
-        String query = "UPDATE Rol SET name=?, description=? WHERE id=?";
+    public void edit(int id, String name, String guard_name) throws SQLException {
+        String query = "UPDATE roles SET name=?, guard_name=? WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, name);
-        ps.setString(2, description);
+        ps.setString(2, guard_name);
         ps.setInt(3, id);
 
         if (ps.executeUpdate() == 0) {
@@ -53,7 +53,7 @@ public class DRol {
 
     // metodo para eliminar un Rol por su id
     public void delete(int id) throws SQLException {
-        String query = "DELETE FROM Rol WHERE id=?";
+        String query = "DELETE FROM roles WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setInt(1, id);
 
@@ -65,7 +65,7 @@ public class DRol {
 
     // metodo para ver todos los Roles
     public List<String[]> show() throws SQLException {
-        String query = "SELECT * FROM Rol";
+        String query = "SELECT * FROM roles";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ResultSet rs = ps.executeQuery();
 
@@ -74,7 +74,7 @@ public class DRol {
             String[] rol = new String[3];
             rol[0] = String.valueOf(rs.getInt("id"));
             rol[1] = rs.getString("name");
-            rol[2] = rs.getString("description");
+            rol[2] = rs.getString("guard_name");
             roles.add(rol);
         }
 
@@ -84,7 +84,7 @@ public class DRol {
     // metodo para ver un Rol por su id
     public String[] verRol(int id) throws SQLException {
         String[] rol = null;
-        String query = "SELECT * FROM Rol WHERE id=?";
+        String query = "SELECT * FROM roles WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();
@@ -92,7 +92,7 @@ public class DRol {
             rol = new String[3];
             rol[0] = String.valueOf(rs.getInt("id"));
             rol[1] = rs.getString("name");
-            rol[2] = rs.getString("description");
+            rol[2] = rs.getString("guard_name");
         }
         return rol;
     }

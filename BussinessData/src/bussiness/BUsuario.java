@@ -22,12 +22,12 @@ public class BUsuario {
     }
 
     public void create(List<String> parametros) throws SQLException {
-        dUsuario.create(parametros.get(0), parametros.get(1), parametros.get(2), parametros.get(3), Integer.parseInt(parametros.get(4)), Integer.parseInt(parametros.get(5)));
+        dUsuario.create(parametros.get(0), parametros.get(1), parametros.get(2), Integer.parseInt(parametros.get(3)));
         dUsuario.disconnect();
     }
 
     public void edit(List<String> parametros) throws SQLException {
-        dUsuario.edit(Integer.parseInt(parametros.get(0)), parametros.get(1), parametros.get(2), parametros.get(3), parametros.get(4), Integer.parseInt(parametros.get(5)), Integer.parseInt(parametros.get(6)));
+        dUsuario.edit(Integer.parseInt(parametros.get(0)), parametros.get(1), parametros.get(2), parametros.get(3), Integer.parseInt(parametros.get(4)));
         dUsuario.disconnect();
     }
 

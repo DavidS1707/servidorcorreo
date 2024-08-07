@@ -20,7 +20,7 @@ public class DElementoVideo {
     private SqlConnection connection;
 
     public DElementoVideo() {
-        connection = new SqlConnection("grupo23sa", "grup023grup023", "mail.tecnoweb.org.bo",
+        connection = new SqlConnection("grupo23sa", "grup023grup023*", "mail.tecnoweb.org.bo",
                 "5432", "db_grupo23sa");
     }
 

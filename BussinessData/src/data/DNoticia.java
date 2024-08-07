@@ -23,13 +23,13 @@ public class DNoticia {
     private SqlConnection connection;
 
     public DNoticia() {
-        connection = new SqlConnection("grupo23sa", "grup023grup023", "mail.tecnoweb.org.bo",
+        connection = new SqlConnection("grupo23sa", "grup023grup023*", "mail.tecnoweb.org.bo",
                 "5432", "db_grupo23sa");
     }
 
     // id, title, content, publication_date
     public void create(String title, String content, String publication_date) throws SQLException, ParseException {
-        String query = "INSERT INTO News(title, content, publication_date) values(?,?,?)";
+        String query = "INSERT INTO news(title, content, publication_date) values(?,?,?)";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, title);
         ps.setString(2, content);
@@ -43,7 +43,7 @@ public class DNoticia {
 
     // metodo para editar una noticia
     public void edit(int id, String title, String content, String publication_date) throws SQLException, ParseException {
-        String query = "UPDATE News SET title=?, content=?, publication_date=? WHERE id=?";
+        String query = "UPDATE news SET title=?, content=?, publication_date=? WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, title);
         ps.setString(2, content);
@@ -58,7 +58,7 @@ public class DNoticia {
 
     // metodo para eliminar una noticia por su id
     public void delete(int id) throws SQLException {
-        String query = "DELETE FROM News WHERE id=?";
+        String query = "DELETE FROM news WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setInt(1, id);
 
@@ -70,7 +70,7 @@ public class DNoticia {
 
     // metodo para ver todas las noticias
     public List<String[]> show() throws SQLException {
-        String query = "SELECT * FROM News";
+        String query = "SELECT * FROM news";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ResultSet rs = ps.executeQuery();
 
@@ -90,7 +90,7 @@ public class DNoticia {
     // metodo para ver una noticia por su id
     public String[] verNews(int id) throws SQLException {
         String[] news = null;
-        String query = "SELECT * FROM News WHERE id=?";
+        String query = "SELECT * FROM news WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();

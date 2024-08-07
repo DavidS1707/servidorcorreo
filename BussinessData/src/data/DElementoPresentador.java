@@ -20,13 +20,13 @@ public class DElementoPresentador {
     private SqlConnection connection;
 
     public DElementoPresentador() {
-        connection = new SqlConnection("grupo23sa", "grup023grup023", "mail.tecnoweb.org.bo",
+        connection = new SqlConnection("grupo23sa", "grup023grup023*", "mail.tecnoweb.org.bo",
                 "5432", "db_grupo23sa");
     }
 
     // content, expression, video_id
     public void create(String content, String expression, int video_id) throws SQLException {
-        String query = "INSERT INTO ElementPresenter(content, expression, video_id) values(?,?,?)";
+        String query = "INSERT INTO element_presenters(content, expression, video_id) values(?,?,?)";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, content);
         ps.setString(2, expression);
@@ -40,7 +40,7 @@ public class DElementoPresentador {
 
     // metodo para editar un ElementPresenter
     public void edit(int id, String content, String expression, int video_id) throws SQLException {
-        String query = "UPDATE ElementPresenter SET content=?, expression=?, video_id=? WHERE id=?";
+        String query = "UPDATE element_presenters SET content=?, expression=?, video_id=? WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, content);
         ps.setString(2, expression);
@@ -55,7 +55,7 @@ public class DElementoPresentador {
 
     // metodo para eliminar un ElementPresenter por su id
     public void delete(int id) throws SQLException {
-        String query = "DELETE FROM ElementPresenter WHERE id=?";
+        String query = "DELETE FROM element_presenters WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setInt(1, id);
 
@@ -67,7 +67,7 @@ public class DElementoPresentador {
 
     // metodo para ver todos los ElementPresenter
     public List<String[]> show() throws SQLException {
-        String query = "SELECT * FROM ElementPresenter";
+        String query = "SELECT * FROM element_presenters";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ResultSet rs = ps.executeQuery();
 
@@ -87,7 +87,7 @@ public class DElementoPresentador {
     // metodo para ver un ElementPresenter por su id
     public String[] verElementPresenter(int id) throws SQLException {
         String[] elementPresenter = null;
-        String query = "SELECT * FROM ElementPresenter WHERE id=?";
+        String query = "SELECT * FROM element_presenters WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();

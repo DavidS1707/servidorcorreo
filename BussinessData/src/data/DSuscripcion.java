@@ -4,7 +4,6 @@
  */
 package data;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import java.sql.ResultSet;
 import java.text.ParseException;
 import java.util.List;
 import postgresqlconnection.SqlConnection;
-import utils.DateString;
 
 /**
  *
@@ -23,18 +21,18 @@ public class DSuscripcion {
     private SqlConnection connection;
 
     public DSuscripcion() {
-        connection = new SqlConnection("grupo23sa", "grup023grup023", "mail.tecnoweb.org.bo",
+        connection = new SqlConnection("grupo23sa", "grup023grup023*", "mail.tecnoweb.org.bo",
                 "5432", "db_grupo23sa");
     }
 
-    // id, user_id, plan_id, type_payment_id, date
-    public void create(int user_id, int plan_id, int type_payment_id, String date) throws SQLException, ParseException {
-        String query = "INSERT INTO Subscription(user_id, plan_id, type_payment_id, date) values(?,?,?,?)";
+    // id, name, price, duration, description
+    public void create(String name, int price, int duration, String description) throws SQLException, ParseException {
+        String query = "INSERT INTO subscriptions(name, price, description) values(?,?,?,?)";
         PreparedStatement ps = connection.connect().prepareStatement(query);
-        ps.setInt(1, user_id);
-        ps.setInt(2, plan_id);
-        ps.setInt(3, type_payment_id);
-        ps.setDate(4, (Date) DateString.StringToDateSQL(date));
+        ps.setString(1, name);
+        ps.setInt(2, price);
+        ps.setInt(3, duration);
+        ps.setString(4, description);
 
         if (ps.executeUpdate() == 0) {
             System.err.print("Class DSubscription.java: Error al intentar crear una suscripción. create(). ");
@@ -43,13 +41,13 @@ public class DSuscripcion {
     }
 
     // metodo para editar una suscripción
-    public void edit(int id, int user_id, int plan_id, int type_payment_id, String date) throws SQLException {
-        String query = "UPDATE Subscription SET user_id=?, plan_id=?, type_payment_id=?, date=? WHERE id=?";
+    public void edit(int id, String name, int price, int duration, String description) throws SQLException {
+        String query = "UPDATE subscriptions SET name=?, price=?, duration=?, description=? WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
-        ps.setInt(1, user_id);
-        ps.setInt(2, plan_id);
-        ps.setInt(3, type_payment_id);
-        ps.setString(4, date);
+        ps.setString(1, name);
+        ps.setInt(2, price);
+        ps.setInt(3, duration);
+        ps.setString(4, description);
         ps.setInt(5, id);
 
         if (ps.executeUpdate() == 0) {
@@ -60,7 +58,7 @@ public class DSuscripcion {
 
     // metodo para eliminar una suscripción por su id
     public void delete(int id) throws SQLException {
-        String query = "DELETE FROM Subscription WHERE id=?";
+        String query = "DELETE FROM subscriptions WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setInt(1, id);
 
@@ -72,7 +70,7 @@ public class DSuscripcion {
 
     // metodo para ver todas las suscripciones
     public List<String[]> show() throws SQLException {
-        String query = "SELECT * FROM Subscription";
+        String query = "SELECT * FROM subscriptions";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ResultSet rs = ps.executeQuery();
 
@@ -80,10 +78,10 @@ public class DSuscripcion {
         while (rs.next()) {
             String[] subscription = new String[5];
             subscription[0] = String.valueOf(rs.getInt("id"));
-            subscription[1] = String.valueOf(rs.getInt("user_id"));
-            subscription[2] = String.valueOf(rs.getInt("plan_id"));
-            subscription[3] = String.valueOf(rs.getInt("type_payment_id"));
-            subscription[4] = rs.getString("date");
+            subscription[1] = rs.getString("name");
+            subscription[2] = String.valueOf(rs.getInt("price"));
+            subscription[3] = String.valueOf(rs.getInt("duration"));
+            subscription[4] = rs.getString("description");
             subscriptions.add(subscription);
         }
 
@@ -93,17 +91,17 @@ public class DSuscripcion {
     // metodo para ver una suscripción por su id
     public String[] verSubscription(int id) throws SQLException {
         String[] subscription = null;
-        String query = "SELECT * FROM Subscription WHERE id=?";
+        String query = "SELECT * FROM subscriptions WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
             subscription = new String[5];
             subscription[0] = String.valueOf(rs.getInt("id"));
-            subscription[1] = String.valueOf(rs.getInt("user_id"));
-            subscription[2] = String.valueOf(rs.getInt("plan_id"));
-            subscription[3] = String.valueOf(rs.getInt("type_payment_id"));
-            subscription[4] = rs.getString("date");
+            subscription[1] = rs.getString("name");
+            subscription[2] = String.valueOf(rs.getInt("price"));
+            subscription[3] = String.valueOf(rs.getInt("duration"));
+            subscription[4] = rs.getString("description");
         }
         return subscription;
     }

@@ -228,6 +228,8 @@ public class ConnectionCore {
                 } catch (SQLException ex) {
                     System.out.println("Mensaje: " + ex.getSQLState());
                     //enviar notificacion de error
+                } catch (ParseException ex) {
+                    Logger.getLogger(ConnectionCore.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 

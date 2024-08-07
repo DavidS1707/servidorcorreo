@@ -23,8 +23,8 @@ public class DComando {
     private final SqlConnection connection;
 
     public DComando() {
-        connection = new SqlConnection("grupo23sa", "grup023grup023", "mail.tecnoweb.org.bo", "5432", "db_grupo23sa");
-//        connection = new DBConeccion("postgres", "1234", "127.0.0.1", "5432", "db_tecno");    //Local By Julico
+        connection = new SqlConnection("grupo23sa", "grup023grup023*", "mail.tecnoweb.org.bo", "5432", "db_grupo23sa");
+//        connection = new DBConeccion("postgres", "1234", "127.0.0.1", "5432", "db_tecno");    
     }
 
     public List<String[]> listar() throws SQLException {

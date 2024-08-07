@@ -20,13 +20,13 @@ public class DElemento {
     private SqlConnection connection;
 
     public DElemento() {
-        connection = new SqlConnection("grupo23sa", "grup023grup023", "mail.tecnoweb.org.bo",
+        connection = new SqlConnection("grupo23sa", "grup023grup023*", "mail.tecnoweb.org.bo",
                 "5432", "db_grupo23sa");
     }
 
     // id, title, video_url, type
     public void create(String title, String video_url, String type) throws SQLException {
-        String query = "INSERT INTO Element(title, video_url, type) values(?,?,?)";
+        String query = "INSERT INTO elements(title, video_url, type) values(?,?,?)";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, title);
         ps.setString(2, video_url);
@@ -40,7 +40,7 @@ public class DElemento {
 
     // metodo para editar un elemento
     public void edit(int id, String title, String video_url, String type) throws SQLException {
-        String query = "UPDATE Element SET title=?, video_url=?, type=? WHERE id=?";
+        String query = "UPDATE elements SET title=?, video_url=?, type=? WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, title);
         ps.setString(2, video_url);
@@ -55,7 +55,7 @@ public class DElemento {
 
     // metodo para eliminar un elemento por su id
     public void delete(int id) throws SQLException {
-        String query = "DELETE FROM Element WHERE id=?";
+        String query = "DELETE FROM elements WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setInt(1, id);
 
@@ -67,7 +67,7 @@ public class DElemento {
 
     // metodo para ver todos los elementos
     public List<String[]> show() throws SQLException {
-        String query = "SELECT * FROM Element";
+        String query = "SELECT * FROM elements";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ResultSet rs = ps.executeQuery();
 
@@ -87,7 +87,7 @@ public class DElemento {
     // metodo para ver un elemento por su id
     public String[] verElement(int id) throws SQLException {
         String[] element = null;
-        String query = "SELECT * FROM Element WHERE id=?";
+        String query = "SELECT * FROM elements WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();

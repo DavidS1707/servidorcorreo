@@ -20,13 +20,13 @@ public class DPresentador {
     private SqlConnection connection;
 
     public DPresentador() {
-        connection = new SqlConnection("grupo23sa", "grup023grup023", "mail.tecnoweb.org.bo",
+        connection = new SqlConnection("grupo23sa", "grup023grup023*", "mail.tecnoweb.org.bo",
                 "5432", "db_grupo23sa");
     }
 
     // full_name, photo_url, sex
     public void create(String full_name, String photo_url, String sex) throws SQLException {
-        String query = "INSERT INTO Presenter(full_name, photo_url, sex) values(?,?,?)";
+        String query = "INSERT INTO presenters(full_name, photo_url, sex) values(?,?,?)";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, full_name);
         ps.setString(2, photo_url);
@@ -40,7 +40,7 @@ public class DPresentador {
 
     // metodo para editar un presentador
     public void edit(int id, String full_name, String photo_url, String sex) throws SQLException {
-        String query = "UPDATE Presenter SET full_name=?, photo_url=?, sex=? WHERE id=?";
+        String query = "UPDATE presenters SET full_name=?, photo_url=?, sex=? WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, full_name);
         ps.setString(2, photo_url);
@@ -55,7 +55,7 @@ public class DPresentador {
 
     // metodo para eliminar un presentador por su id
     public void delete(int id) throws SQLException {
-        String query = "DELETE FROM Presenter WHERE id=?";
+        String query = "DELETE FROM presenters WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setInt(1, id);
 
@@ -67,7 +67,7 @@ public class DPresentador {
 
     // metodo para ver todos los presentadores
     public List<String[]> show() throws SQLException {
-        String query = "SELECT * FROM Presenter";
+        String query = "SELECT * FROM presenters";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ResultSet rs = ps.executeQuery();
 
@@ -87,7 +87,7 @@ public class DPresentador {
     // metodo para ver un presentador por su id
     public String[] verPresenter(int id) throws SQLException {
         String[] presenter = null;
-        String query = "SELECT * FROM Presenter WHERE id=?";
+        String query = "SELECT * FROM presenters WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();

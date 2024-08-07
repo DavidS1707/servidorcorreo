@@ -20,13 +20,13 @@ public class DCategoriaNoticia {
     private SqlConnection connection;
 
     public DCategoriaNoticia() {
-        connection = new SqlConnection("grupo23sa", "grup023grup023", "mail.tecnoweb.org.bo",
+        connection = new SqlConnection("grupo23sa", "grup023grup023*", "mail.tecnoweb.org.bo",
                 "5432", "db_grupo23sa");
     }
 
     // id, name, description
     public void create(String name, String description) throws SQLException {
-        String query = "INSERT INTO CategoryNews(name, description) values(?,?)";
+        String query = "INSERT INTO news_categories(name, description) values(?,?)";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, name);
         ps.setString(2, description);
@@ -39,7 +39,7 @@ public class DCategoriaNoticia {
 
     // metodo para editar una categoría de noticia
     public void edit(int id, String name, String description) throws SQLException {
-        String query = "UPDATE CategoryNews SET name=?, description=? WHERE id=?";
+        String query = "UPDATE news_categories SET name=?, description=? WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, name);
         ps.setString(2, description);
@@ -53,7 +53,7 @@ public class DCategoriaNoticia {
 
     // metodo para eliminar una categoría de noticia por su id
     public void delete(int id) throws SQLException {
-        String query = "DELETE FROM CategoryNews WHERE id=?";
+        String query = "DELETE FROM news_categories WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setInt(1, id);
 
@@ -65,7 +65,7 @@ public class DCategoriaNoticia {
 
     // metodo para ver todas las categorías de noticias
     public List<String[]> show() throws SQLException {
-        String query = "SELECT * FROM CategoryNews";
+        String query = "SELECT * FROM news_categories";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ResultSet rs = ps.executeQuery();
 
@@ -84,7 +84,7 @@ public class DCategoriaNoticia {
     // metodo para ver una categoría de noticia por su id
     public String[] verCategoryNews(int id) throws SQLException {
         String[] category = null;
-        String query = "SELECT * FROM CategoryNews WHERE id=?";
+        String query = "SELECT * FROM news_categories WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();

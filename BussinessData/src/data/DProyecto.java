@@ -20,13 +20,13 @@ public class DProyecto {
     private SqlConnection connection;
 
     public DProyecto() {
-        connection = new SqlConnection("grupo23sa", "grup023grup023", "mail.tecnoweb.org.bo",
+        connection = new SqlConnection("grupo23sa", "grup023grup023*", "mail.tecnoweb.org.bo",
                 "5432", "db_grupo23sa");
     }
 
     // id, name, description, cover_url, video_url, status
     public void create(String name, String description, String cover_url, String video_url, String status) throws SQLException {
-        String query = "INSERT INTO Project(name, description, cover_url, video_url, status) values(?,?,?,?,?)";
+        String query = "INSERT INTO projects(name, description, cover_url, video_url, status) values(?,?,?,?,?)";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, name);
         ps.setString(2, description);
@@ -42,7 +42,7 @@ public class DProyecto {
 
     // metodo para editar un proyecto
     public void edit(int id, String name, String description, String cover_url, String video_url, String status) throws SQLException {
-        String query = "UPDATE Project SET name=?, description=?, cover_url=?, video_url=?, status=? WHERE id=?";
+        String query = "UPDATE projects SET name=?, description=?, cover_url=?, video_url=?, status=? WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, name);
         ps.setString(2, description);
@@ -59,7 +59,7 @@ public class DProyecto {
 
     // metodo para eliminar un proyecto por su id
     public void delete(int id) throws SQLException {
-        String query = "DELETE FROM Project WHERE id=?";
+        String query = "DELETE FROM projects WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setInt(1, id);
 
@@ -71,7 +71,7 @@ public class DProyecto {
 
     // metodo para ver todos los proyectos
     public List<String[]> show() throws SQLException {
-        String query = "SELECT * FROM Project";
+        String query = "SELECT * FROM projects";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ResultSet rs = ps.executeQuery();
 
@@ -93,7 +93,7 @@ public class DProyecto {
     // metodo para ver un proyecto por su id
     public String[] verProject(int id) throws SQLException {
         String[] project = null;
-        String query = "SELECT * FROM Project WHERE id=?";
+        String query = "SELECT * FROM projects WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();

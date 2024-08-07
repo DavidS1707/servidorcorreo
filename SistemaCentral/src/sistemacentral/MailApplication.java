@@ -189,7 +189,7 @@ public class MailApplication {
 
     }
 
-    public void pago(TokenEvent event) throws SQLException {
+    public void pago(TokenEvent event) throws SQLException, ParseException {
         System.out.println("CU: PAGO");
         System.out.println(event);
         if (event.getAction() == Token.AGREGAR) {

@@ -4,8 +4,9 @@
  */
 package bussiness;
 
-import data.DTipoPago;
+import data.DPago;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,18 +16,18 @@ import java.util.List;
  */
 public class BPago {
 
-    private DTipoPago dTipoPago;
+    private DPago dTipoPago;
 
     public BPago() {
-        dTipoPago = new DTipoPago();
+        dTipoPago = new DPago();
     }
 
-    public void create(List<String> parametros) throws SQLException {
+    public void create(List<String> parametros) throws SQLException, ParseException {
         dTipoPago.create(parametros.get(0), parametros.get(1));
         dTipoPago.disconnect();
     }
 
-    public void edit(List<String> parametros) throws SQLException {
+    public void edit(List<String> parametros) throws SQLException, ParseException {
         dTipoPago.edit(Integer.parseInt(parametros.get(0)), parametros.get(1), parametros.get(2));
         dTipoPago.disconnect();
     }

@@ -256,6 +256,8 @@ public class Main {
                 } catch (SQLException ex) {
                     System.out.println("Mensaje: " + ex.getSQLState());
                     //enviar notificacion de error
+                } catch (ParseException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
