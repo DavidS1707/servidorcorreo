@@ -18,7 +18,8 @@ import postgresqlconnection.SqlConnection;
  */
 public class DSuscripcion {
 
-    private SqlConnection connection;
+    private final SqlConnection connection;
+    public static final String[] HEADERS = {"id", "name", "price", "duration", "description"};
 
     public DSuscripcion() {
         connection = new SqlConnection("grupo23sa", "grup023grup023*", "mail.tecnoweb.org.bo",

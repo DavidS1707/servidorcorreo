@@ -17,7 +17,8 @@ import postgresqlconnection.SqlConnection;
  */
 public class DUsuario {
 
-    private SqlConnection connection;
+    private final SqlConnection connection;
+    public static final String[] HEADERS = {"id", "name", "email", "password", "pointer"};
 
     public DUsuario() {
         connection = new SqlConnection("grupo23sa", "grup023grup023*", "mail.tecnoweb.org.bo",

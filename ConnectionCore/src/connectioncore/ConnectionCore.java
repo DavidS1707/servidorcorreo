@@ -121,11 +121,6 @@ public class ConnectionCore {
             }
 
             @Override
-            public void producto(TokenEvent event) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-
-            @Override
             public void contenido(TokenEvent event) {
                 //
             }

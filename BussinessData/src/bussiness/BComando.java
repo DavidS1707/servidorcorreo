@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class BComando {
 
-    private DComando dComando;
+    private final DComando dComando;
 
     public BComando() {
         this.dComando = new DComando();

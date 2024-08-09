@@ -17,7 +17,8 @@ import postgresqlconnection.SqlConnection;
  */
 public class DElemento {
 
-    private SqlConnection connection;
+    private final SqlConnection connection;
+    public static final String[] HEADERS = {"id", "title", "video_url", "type"};
 
     public DElemento() {
         connection = new SqlConnection("grupo23sa", "grup023grup023*", "mail.tecnoweb.org.bo",

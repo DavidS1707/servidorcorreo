@@ -369,10 +369,6 @@ public class Main {
 //                }
             }
 
-            @Override
-            public void producto(TokenEvent event) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
         });
 
         Thread thread = new Thread(interpreter);

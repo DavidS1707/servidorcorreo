@@ -17,7 +17,8 @@ import postgresqlconnection.SqlConnection;
  */
 public class DPresentador {
 
-    private SqlConnection connection;
+    private final SqlConnection connection;
+    public static final String[] HEADERS = {"id", "full_name", "photo_url", "sex"};
 
     public DPresentador() {
         connection = new SqlConnection("grupo23sa", "grup023grup023*", "mail.tecnoweb.org.bo",

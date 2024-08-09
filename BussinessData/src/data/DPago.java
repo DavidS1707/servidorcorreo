@@ -20,7 +20,8 @@ import utils.DateString;
  */
 public class DPago {
 
-    private SqlConnection connection;
+    private final SqlConnection connection;
+    public static final String[] HEADERS = {"id", "date", "type_payment"};
 
     public DPago() {
         connection = new SqlConnection("grupo23sa", "grup023grup023*", "mail.tecnoweb.org.bo",

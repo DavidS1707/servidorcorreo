@@ -29,7 +29,7 @@ public class MailVerificationThread implements Runnable {
     private final static int PORT_POP = 110;
     private final static String HOST = "mail.tecnoweb.org.bo";
     private final static String USER = "grupo23sa";
-    private final static String PASSWORD = "grup023grup023";
+    private final static String PASSWORD = "grup023grup023*";
 
     private Socket socket;
     private BufferedReader input;
@@ -126,7 +126,7 @@ public class MailVerificationThread implements Runnable {
         while (true) {
             String line = input.readLine();
             if (line == null) {
-                throw new IOException("Server no responde");
+                throw new IOException("Server no responde. Error al abrir correo.");
             }
             if (line.equals(".")) {
                 break;

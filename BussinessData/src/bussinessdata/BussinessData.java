@@ -28,11 +28,9 @@ public class BussinessData {
         BUsuario bUsuario = new BUsuario();
         List<String> user = new ArrayList<String>();
         user.add("Luishiño");//nombre
-        user.add("Pericena");//apellido
         user.add("luishino@gmail.com");//correo
         user.add("123456");//contraseña
         user.add("30");//puntos
-        user.add("1");//id del rol
         try {
             bUsuario.create(user);
         } catch (SQLException ex) {

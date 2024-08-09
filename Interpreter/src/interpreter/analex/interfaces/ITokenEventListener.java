@@ -14,8 +14,6 @@ public interface ITokenEventListener {
 
     void usuario(TokenEvent event);
 
-    void producto(TokenEvent event);
-
     void error(TokenEvent event);
 
     void contenido(TokenEvent event);
