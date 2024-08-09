@@ -81,6 +81,7 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
         thread.start();
     }
 
+    @Override
     public void onReceiveEmailEvent(List<Email> emails) {
         for (Email email : emails) {
             Interpreter interpreter = new Interpreter(email.getSubject(), email.getFrom());
