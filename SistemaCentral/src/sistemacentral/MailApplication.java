@@ -57,7 +57,7 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
     private final BNoticia bNoticia;
     private final BPago bPago;
     private final BPresentador bPresentador;
-    private BComando bComando;
+    private final BComando bComando;
     private final BProyecto bProyecto;
     private final BSuscripcion bSuscripcion;
 
@@ -66,6 +66,7 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
         mailVerificationThread.setEmailEventListener(MailApplication.this);
 
         bUsuario = new BUsuario();
+        bComando = new BComando();
         bContenido = new BContenido();
         bEstadistica = new BEstadistica();
         bNoticia = new BNoticia();
@@ -84,8 +85,9 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
     @Override
     public void onReceiveEmailEvent(List<Email> emails) {
         for (Email email : emails) {
-            Interpreter interpreter = new Interpreter(email.getSubject(), email.getFrom());
-            interpreter.setListener((ITokenEventListener) MailApplication.this);
+            String subject = email.getSubject() + " ";
+            Interpreter interpreter = new Interpreter(subject, email.getFrom());
+            interpreter.setListener(MailApplication.this);
             Thread thread = new Thread(interpreter);
             thread.setName("Interpreter Thread");
             thread.start();
@@ -96,6 +98,7 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
     public void help(TokenEvent event) {
         System.out.println("HELP");
         try {
+            System.out.println(event);
             tableNotifySuccess(event.getSender(), "Lista de Comandos", DComando.HEADERS, bComando.listar());
         } catch (SQLException ex) {
             handleError(CONSTRAINTS_ERROR, event.getSender(), null);
@@ -186,7 +189,7 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
                         s = s + "\n";
                     }
                     System.out.println(s);
-                    tableNotifySuccess(event.getSender(), "Lista de Usuarios: ", DSuscripcion.HEADERS, (ArrayList<String[]>) bSuscripcion.show());
+                    tableNotifySuccess(event.getSender(), "Lista de Suscripciones: ", DSuscripcion.HEADERS, (ArrayList<String[]>) bSuscripcion.show());
                     break;
                 }
                 case Token.ELIMINAR -> {
@@ -282,6 +285,11 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
                 s = s + "\n";
             }
             System.out.println(s);
+            try {
+                tableNotifySuccess(event.getSender(), "Reportes y Estadisticas: ", DNoticia.HEADERS, (ArrayList<String[]>) bEstadistica.showNoticias());
+            } catch (SQLException ex) {
+                Logger.getLogger(MailApplication.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             System.out.println("La accion no es valida para el caso de uso");
             //enviar al correo una notificacion
@@ -384,7 +392,7 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
                     System.out.println("La accion no es valida para el caso de uso");
             }
         } catch (SQLException ex) {
-            System.out.println("Mensaje: " + ex.getSQLState());
+            System.out.println("Mensaje de error en base de datos: " + ex.getSQLState());
             handleError(CONSTRAINTS_ERROR, event.getSender(), null);
         } catch (NumberFormatException ex) {
             handleError(NUMBER_FORMAT_ERROR, event.getSender(), null);

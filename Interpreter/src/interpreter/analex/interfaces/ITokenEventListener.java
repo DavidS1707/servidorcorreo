@@ -12,6 +12,8 @@ import interpreter.events.TokenEvent;
  */
 public interface ITokenEventListener {
 
+    void help(TokenEvent token_event);
+
     void usuario(TokenEvent event);
 
     void error(TokenEvent event);
@@ -30,5 +32,4 @@ public interface ITokenEventListener {
 
     void suscripcion(TokenEvent event);
 
-    void help(TokenEvent token_event);
 }
