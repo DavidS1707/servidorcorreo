@@ -118,13 +118,13 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
                     simpleNotifySuccess(event.getSender(), "Usuario registrado correctamente!");
                     break;
                 }
-                case Token.MODIFY -> {
+                case Token.MODIFICAR -> {
                     bUsuario.edit(event.getParams());
                     System.out.println("Usuario modificado correctamente!");
                     simpleNotifySuccess(event.getSender(), "Usuario modificado correctamente!");
                     break;
                 }
-                case Token.GET -> {
+                case Token.LISTAR -> {
                     ArrayList<String[]> lista = (ArrayList<String[]>) bUsuario.show();
                     String s = "";
                     for (int i = 0; i < lista.size(); i++) {
@@ -138,7 +138,7 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
                     tableNotifySuccess(event.getSender(), "Lista de Usuarios: ", DUsuario.HEADERS, (ArrayList<String[]>) bUsuario.show());
                     break;
                 }
-                case Token.DELETE -> {
+                case Token.ELIMINAR -> {
                     bUsuario.delete(event.getParams());
                     System.out.println("Usuario eliminado correctamente!");
                     simpleNotifySuccess(event.getSender(), "Usuario eliminado correctamente!");
@@ -169,13 +169,13 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
                     simpleNotifySuccess(event.getSender(), "Suscripcion registrada correctamente!");
                     break;
                 }
-                case Token.MODIFY -> {
+                case Token.MODIFICAR -> {
                     bSuscripcion.edit(event.getParams());
                     System.out.println("Suscripcion modificada correctamente!");
                     simpleNotifySuccess(event.getSender(), "Suscripcion modificada correctamente!");
                     break;
                 }
-                case Token.GET -> {
+                case Token.LISTAR -> {
                     ArrayList<String[]> lista = (ArrayList<String[]>) bSuscripcion.show();
                     String s = "";
                     for (int i = 0; i < lista.size(); i++) {
@@ -189,7 +189,7 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
                     tableNotifySuccess(event.getSender(), "Lista de Usuarios: ", DSuscripcion.HEADERS, (ArrayList<String[]>) bSuscripcion.show());
                     break;
                 }
-                case Token.DELETE -> {
+                case Token.ELIMINAR -> {
                     bUsuario.delete(event.getParams());
                     System.out.println("Suscripcion eliminada correctamente!");
                     simpleNotifySuccess(event.getSender(), "Suscripcion eliminada correctamente!");
@@ -222,13 +222,13 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
                     simpleNotifySuccess(event.getSender(), "Contenido registrado correctamente!");
                     break;
                 }
-                case Token.MODIFY -> {
+                case Token.MODIFICAR -> {
                     bContenido.edit(event.getParams());
                     System.out.println("Contenido modificado correctamente!");
                     simpleNotifySuccess(event.getSender(), "Contenido modificado correctamente!");
                     break;
                 }
-                case Token.GET -> {
+                case Token.LISTAR -> {
                     ArrayList<String[]> lista = (ArrayList<String[]>) bContenido.show();
                     String s = "";
                     for (int i = 0; i < lista.size(); i++) {
@@ -242,7 +242,7 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
                     tableNotifySuccess(event.getSender(), "Lista de Contenidos: ", DElemento.HEADERS, (ArrayList<String[]>) bContenido.show());
                     break;
                 }
-                case Token.DELETE -> {
+                case Token.ELIMINAR -> {
                     bUsuario.delete(event.getParams());
                     System.out.println("Contenido eliminado correctamente!");
                     simpleNotifySuccess(event.getSender(), "Contenido eliminado correctamente!");
@@ -265,7 +265,7 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
     public void estadistica(TokenEvent event) {
         System.out.println("CU: ESTADISTICA");
         System.out.println(event);
-        if (event.getAction() == Token.GET) {
+        if (event.getAction() == Token.LISTAR) {
             ArrayList<String[]> lista = null;
             try {
                 lista = (ArrayList<String[]>) bEstadistica.showNoticias();
@@ -301,13 +301,13 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
                     simpleNotifySuccess(event.getSender(), "Noticia registrada correctamente!");
                     break;
                 }
-                case Token.MODIFY -> {
+                case Token.MODIFICAR -> {
                     bNoticia.edit(event.getParams());
                     System.out.println("Noticia modificada correctamente!");
                     simpleNotifySuccess(event.getSender(), "Noticia modificada correctamente!");
                     break;
                 }
-                case Token.GET -> {
+                case Token.LISTAR -> {
                     ArrayList<String[]> lista = (ArrayList<String[]>) bNoticia.show();
                     String s = "";
                     for (int i = 0; i < lista.size(); i++) {
@@ -321,7 +321,7 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
                     tableNotifySuccess(event.getSender(), "Lista de Noticias: ", DNoticia.HEADERS, (ArrayList<String[]>) bNoticia.show());
                     break;
                 }
-                case Token.DELETE -> {
+                case Token.ELIMINAR -> {
                     bNoticia.delete(event.getParams());
                     System.out.println("Noticia eliminada correctamente!");
                     simpleNotifySuccess(event.getSender(), "Noticia eliminada correctamente!");
@@ -354,13 +354,13 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
                     simpleNotifySuccess(event.getSender(), "Pago registrado correctamente!");
                     break;
                 }
-                case Token.MODIFY -> {
+                case Token.MODIFICAR -> {
                     bPago.edit(event.getParams());
                     System.out.println("Pago modificado correctamente!");
                     simpleNotifySuccess(event.getSender(), "Pago modificado correctamente!");
                     break;
                 }
-                case Token.GET -> {
+                case Token.LISTAR -> {
                     ArrayList<String[]> lista = (ArrayList<String[]>) bPago.show();
                     String s = "";
                     for (int i = 0; i < lista.size(); i++) {
@@ -374,7 +374,7 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
                     tableNotifySuccess(event.getSender(), "Lista de Pagos: ", DPago.HEADERS, (ArrayList<String[]>) bPago.show());
                     break;
                 }
-                case Token.DELETE -> {
+                case Token.ELIMINAR -> {
                     bPago.delete(event.getParams());
                     System.out.println("Pago eliminado correctamente!");
                     simpleNotifySuccess(event.getSender(), "Pago eliminado correctamente!");
@@ -407,13 +407,13 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
                     simpleNotifySuccess(event.getSender(), "Presentador registrado correctamente!");
                     break;
                 }
-                case Token.MODIFY -> {
+                case Token.MODIFICAR -> {
                     bPresentador.edit(event.getParams());
                     System.out.println("Presentador modificado correctamente!");
                     simpleNotifySuccess(event.getSender(), "Presentador modificado correctamente!");
                     break;
                 }
-                case Token.GET -> {
+                case Token.LISTAR -> {
                     ArrayList<String[]> lista = (ArrayList<String[]>) bPresentador.show();
                     String s = "";
                     for (int i = 0; i < lista.size(); i++) {
@@ -427,7 +427,7 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
                     tableNotifySuccess(event.getSender(), "Lista de Presentadores: ", DPresentador.HEADERS, (ArrayList<String[]>) bPresentador.show());
                     break;
                 }
-                case Token.DELETE -> {
+                case Token.ELIMINAR -> {
                     bPresentador.delete(event.getParams());
                     System.out.println("Presentador eliminado correctamente!");
                     simpleNotifySuccess(event.getSender(), "Presentador eliminado correctamente!");
@@ -458,13 +458,13 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
                     simpleNotifySuccess(event.getSender(), "Proyecto registrado correctamente!");
                     break;
                 }
-                case Token.MODIFY -> {
+                case Token.MODIFICAR -> {
                     bProyecto.edit(event.getParams());
                     System.out.println("Proyecto modificado correctamente!");
                     simpleNotifySuccess(event.getSender(), "Proyecto modificado correctamente!");
                     break;
                 }
-                case Token.GET -> {
+                case Token.LISTAR -> {
                     ArrayList<String[]> lista = (ArrayList<String[]>) bProyecto.show();
                     String s = "";
                     for (int i = 0; i < lista.size(); i++) {
@@ -478,7 +478,7 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
                     tableNotifySuccess(event.getSender(), "Lista de Proyectos: ", DProyecto.HEADERS, (ArrayList<String[]>) bProyecto.show());
                     break;
                 }
-                case Token.DELETE -> {
+                case Token.ELIMINAR -> {
                     bProyecto.delete(event.getParams());
                     System.out.println("Proyecto eliminado correctamente!");
                     simpleNotifySuccess(event.getSender(), "Proyecto eliminado correctamente!");

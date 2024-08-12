@@ -22,7 +22,7 @@ public class BUsuario {
     }
 
     public void create(List<String> parametros) throws SQLException {
-        dUsuario.create(parametros.get(0), parametros.get(1), parametros.get(2), Integer.parseInt(parametros.get(3)));
+        dUsuario.create(parametros.get(0), parametros.get(1), parametros.get(2), 20);
         dUsuario.disconnect();
     }
 

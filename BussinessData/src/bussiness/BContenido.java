@@ -23,12 +23,12 @@ public class BContenido {
     }
 
     public void create(List<String> parametros) throws SQLException {
-        dElemento.create(parametros.get(0), parametros.get(1), parametros.get(2));
+        dElemento.create(parametros.get(0), parametros.get(1), "presenter");
         dElemento.disconnect();
     }
 
     public void edit(List<String> parametros) throws SQLException {
-        dElemento.edit(Integer.parseInt(parametros.get(0)), parametros.get(1), parametros.get(2), parametros.get(3));
+        dElemento.edit(Integer.parseInt(parametros.get(0)), parametros.get(1), parametros.get(2), "presenter");
         dElemento.disconnect();
     }
 

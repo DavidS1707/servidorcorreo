@@ -27,7 +27,7 @@ public class DUsuario {
 
     //id, name, email, password, pointer
     public void create(String name, String email, String password, int pointer) throws SQLException {
-        String query = "INSERT INTO \"User\"(name, email, password, pointer, rol_id)" + "values(?,?,?,?)";
+        String query = "INSERT INTO Users(name, email, password, pointer)" + "values(?,?,?,?)";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, name);
         ps.setString(2, email);
@@ -42,7 +42,7 @@ public class DUsuario {
 
     //metodo para editar un usuario
     public void edit(int id, String name, String email, String password, int pointer) throws SQLException {
-        String query = "UPDATE \"User\" SET name=?, SET email=?, SET password=?, SET pointer=? " + "WHERE id=?";
+        String query = "UPDATE users SET name=?, SET email=?, SET password=?, SET pointer=? " + "WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, name);
         ps.setString(2, email);
@@ -58,7 +58,7 @@ public class DUsuario {
 
     //metodo para eliminar un usuario por su id
     public void delete(int id) throws SQLException {
-        String query = "DELETE FROM \"User\" WHERE id=?";
+        String query = "DELETE FROM users WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setInt(1, id);
 
@@ -70,7 +70,7 @@ public class DUsuario {
 
     //metodo para ver todos los usuarios
     public List<String[]> show() throws SQLException {
-        String query = "SELECT * FROM \"User\"";
+        String query = "SELECT * FROM users";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ResultSet rs = ps.executeQuery();
 
@@ -91,7 +91,7 @@ public class DUsuario {
     //metodo para ver un usuario por su id
     public String[] verUsuario(int id) throws SQLException {
         String[] user = null;
-        String query = "SELECT * FROM \"User\" WHERE id=?";
+        String query = "SELECT * FROM users WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();
@@ -109,7 +109,7 @@ public class DUsuario {
     //metodo para devolver el id de un usuario por su correo
     public int getIdByEmail(String email) throws SQLException {
         int id = -1;
-        String query = "SELECT * FROM \"User\" WHERE email=?";
+        String query = "SELECT * FROM users WHERE email=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, email);
         ResultSet rs = ps.executeQuery();

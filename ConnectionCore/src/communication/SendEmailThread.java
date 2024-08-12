@@ -26,22 +26,20 @@ import utils.Email;
  */
 public class SendEmailThread implements Runnable {
 
-    private final static String PORT_SMTP = "465";
-    private final static String PROTOCOL = "smtp";
-    private final static String HOST = "smtp.googlemail.com";
-    private final static String USER = "davsuar2000@gmail.com";
-    private final static String MAIL = "davsuar2000@gmail.com";
-    private final static String MAIL_PASSWORD = "***********";
-
-    /*
+//    private final static String PORT_SMTP = "465";
+//    private final static String PROTOCOL = "smtp";
+//    private final static String HOST = "smtp.googlemail.com";
+//    private final static String USER = "davsuar2000@gmail.com";
+//    private final static String MAIL = "davsuar2000@gmail.com";
+//    private final static String MAIL_PASSWORD = "***********";
     private final static String PORT_SMTP = "25";
     private final static String PROTOCOL = "smtp";
     private final static String HOST = "mail.tecnoweb.org.bo";
     private final static String USER = "grupo23sca";
     private final static String PASSWORD = "grup023grup023";
     private final static String MAIL = "grupo23sa@tecnoweb.org.bo";
-    private final static String MAIL_PASSWORD = "grup023grup023";
-     */
+    private final static String MAIL_PASSWORD = "grup023grup023*";
+
     private Email email;
 
     public SendEmailThread(Email email) {
@@ -50,13 +48,22 @@ public class SendEmailThread implements Runnable {
 
     @Override
     public void run() {
+        //GMAIL
+        /*  Properties properties = new Properties();
+        properties.put("mail.transport.protocol", PROTOCOL);//cuando uses tecnoweb
+        properties.setProperty("mail.smtp.host", HOST);
+        properties.setProperty("mail.smtp.port", PORT_SMTP);
+        properties.setProperty("mail.smtp.ssl.enable", "true");//cuando usen Gmail
+        properties.setProperty("mail.smtp.auth", "true");//cuando uses tecnoweb en false 
+         */
+        //TECNO WEB
         Properties properties = new Properties();
         properties.put("mail.transport.protocol", PROTOCOL);
         properties.setProperty("mail.smtp.host", HOST);
         properties.setProperty("mail.smtp.port", PORT_SMTP);
-        //properties.setProperty("mail.smtp.tls.enable", "true");//cuando user tecnoweb
-        properties.setProperty("mail.smtp.ssl.enable", "true");//cuando usen Gmail
-        properties.setProperty("mail.smtp.auth", "true");
+        properties.setProperty("mail.smtp.tls.enable", "true");//cuando usen tecnoweb
+        //properties.setProperty("mail.smtp.ssl.enable", "true");//cuando usen Gmail
+        properties.setProperty("mail.smtp.auth", "false");
 
         Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {

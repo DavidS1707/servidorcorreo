@@ -28,12 +28,15 @@ public class DPago {
                 "5432", "db_grupo23sa");
     }
 
-    // id, date, type_payment
-    public void create(String date, String type_payment) throws SQLException, ParseException {
+    // id, date, type_payment, phone, customer_name, customer_ci
+    public void create(String date, int type_payment, String phone, String customer_name, String customer_ci) throws SQLException, ParseException {
         String query = "INSERT INTO payments(date, type_payment) values(?,?)";
         PreparedStatement ps = connection.connect().prepareStatement(query);
-        ps.setString(1, date);
-        ps.setDate(2, (Date) DateString.StringToDateSQL(type_payment));
+        ps.setDate(1, (Date) DateString.StringToDateSQL(date));
+        ps.setInt(2, type_payment);
+        ps.setString(3, phone);
+        ps.setString(4, customer_name);
+        ps.setString(5, customer_ci);
 
         if (ps.executeUpdate() == 0) {
             System.err.print("Class DPago.java: Error al intentar crear un tipo de pago. create(). ");
@@ -41,12 +44,15 @@ public class DPago {
         }
     }
 
-    public void edit(int id, String date, String type_payment) throws SQLException, ParseException {
+    public void edit(int id, String date, int type_payment, String phone, String customer_name, String customer_ci) throws SQLException, ParseException {
         String query = "UPDATE payments SET date=?, type_payment=? WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
-        ps.setString(1, date);
-        ps.setDate(2, (Date) DateString.StringToDateSQL(type_payment));
-        ps.setInt(3, id);
+        ps.setDate(1, (Date) DateString.StringToDateSQL(date));
+        ps.setInt(2, type_payment);
+        ps.setString(3, phone);
+        ps.setString(4, customer_name);
+        ps.setString(5, customer_ci);
+        ps.setInt(6, id);
 
         if (ps.executeUpdate() == 0) {
             System.err.print("Class DPago.java: Error al intentar actualizar el tipo de pago. edit(). ");
@@ -75,7 +81,10 @@ public class DPago {
             String[] payments = new String[3];
             payments[0] = String.valueOf(rs.getInt("id"));
             payments[1] = rs.getString("date");
-            payments[2] = rs.getString("type_payment");
+            payments[2] = String.valueOf(rs.getInt("type_payment"));
+            payments[3] = rs.getString("phone");
+            payments[4] = rs.getString("customer_name");
+            payments[5] = rs.getString("customer_ci");
             Payments.add(payments);
         }
 

@@ -12,12 +12,12 @@ public class SqlConnection {
 
     private static final String DRIVER = "jdbc:postgresql://";
     private Connection connection;
-    private String user;
-    private String password;
-    private String host;
-    private String port;
-    private String name;
-    private String url;
+    private final String user;
+    private final String password;
+    private final String host;
+    private final String port;
+    private final String name;
+    private final String url;
 
     public SqlConnection(String user, String password, String host, String port, String name) {
         this.user = user; //user: postgres
