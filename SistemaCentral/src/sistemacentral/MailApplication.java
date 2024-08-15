@@ -99,6 +99,16 @@ public class MailApplication implements IEmailEventListener, ITokenEventListener
         System.out.println("HELP");
         try {
             System.out.println(event);
+            ArrayList<String[]> lista = (ArrayList<String[]>) bComando.listar();
+            String s = "";
+            for (int i = 0; i < lista.size(); i++) {
+                s = s + "[" + i + "] : ";
+                for (String get : lista.get(i)) {
+                    s = s + get + " | ";
+                }
+                s = s + "\n";
+            }
+            System.out.println(s);
             tableNotifySuccess(event.getSender(), "Lista de Comandos", DComando.HEADERS, bComando.listar());
         } catch (SQLException ex) {
             handleError(CONSTRAINTS_ERROR, event.getSender(), null);

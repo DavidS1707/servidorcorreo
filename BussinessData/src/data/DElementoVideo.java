@@ -17,7 +17,7 @@ import postgresqlconnection.SqlConnection;
  */
 public class DElementoVideo {
 
-    private SqlConnection connection;
+    private final SqlConnection connection;
 
     public DElementoVideo() {
         connection = new SqlConnection("grupo23sa", "grup023grup023*", "mail.tecnoweb.org.bo",

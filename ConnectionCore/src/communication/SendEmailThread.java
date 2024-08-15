@@ -35,12 +35,12 @@ public class SendEmailThread implements Runnable {
     private final static String PORT_SMTP = "25";
     private final static String PROTOCOL = "smtp";
     private final static String HOST = "mail.tecnoweb.org.bo";
-    private final static String USER = "grupo23sca";
-    private final static String PASSWORD = "grup023grup023";
+    private final static String USER = "grupo23sa";
+    private final static String PASSWORD = "grup023grup023*";
     private final static String MAIL = "grupo23sa@tecnoweb.org.bo";
     private final static String MAIL_PASSWORD = "grup023grup023*";
 
-    private Email email;
+    private final Email email;
 
     public SendEmailThread(Email email) {
         this.email = email;
@@ -66,6 +66,7 @@ public class SendEmailThread implements Runnable {
         properties.setProperty("mail.smtp.auth", "false");
 
         Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
+            @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(USER, MAIL_PASSWORD);
             }
