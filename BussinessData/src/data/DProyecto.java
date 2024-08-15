@@ -18,22 +18,21 @@ import postgresqlconnection.SqlConnection;
 public class DProyecto {
 
     private final SqlConnection connection;
-    public static final String[] HEADERS = {"id", "name", "description", "cover_url", "video_url", "status"};
+    public static final String[] HEADERS = {"id", "name", "description", "cover_url", "video_url"};
 
     public DProyecto() {
         connection = new SqlConnection("grupo23sa", "grup023grup023*", "mail.tecnoweb.org.bo",
                 "5432", "db_grupo23sa");
     }
 
-    // id, name, description, cover_url, video_url, status
-    public void create(String name, String description, String cover_url, String video_url, String status) throws SQLException {
-        String query = "INSERT INTO projects(name, description, cover_url, video_url, status) values(?,?,?,?,?)";
+    // id, name, description, cover_url, video_url
+    public void create(String name, String description, String cover_url, String video_url) throws SQLException {
+        String query = "INSERT INTO projects(name, description, cover_url, video_url) values(?,?,?,?)";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, name);
         ps.setString(2, description);
         ps.setString(3, cover_url);
         ps.setString(4, video_url);
-        ps.setString(5, status);
 
         if (ps.executeUpdate() == 0) {
             System.err.print("Class DProject.java: Error al intentar crear un proyecto. create(). ");
@@ -43,14 +42,13 @@ public class DProyecto {
 
     // metodo para editar un proyecto
     public void edit(int id, String name, String description, String cover_url, String video_url, String status) throws SQLException {
-        String query = "UPDATE projects SET name=?, description=?, cover_url=?, video_url=?, status=? WHERE id=?";
+        String query = "UPDATE projects SET name=?, description=?, cover_url=?, video_url=? WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, name);
         ps.setString(2, description);
         ps.setString(3, cover_url);
         ps.setString(4, video_url);
-        ps.setString(5, status);
-        ps.setInt(6, id);
+        ps.setInt(5, id);
 
         if (ps.executeUpdate() == 0) {
             System.err.print("Class DProject.java: Error al intentar actualizar el proyecto. update(). ");
@@ -84,7 +82,6 @@ public class DProyecto {
             project[2] = rs.getString("description");
             project[3] = rs.getString("cover_url");
             project[4] = rs.getString("video_url");
-            project[5] = rs.getString("status");
             projects.add(project);
         }
 
@@ -105,7 +102,6 @@ public class DProyecto {
             project[2] = rs.getString("description");
             project[3] = rs.getString("cover_url");
             project[4] = rs.getString("video_url");
-            project[5] = rs.getString("status");
         }
         return project;
     }

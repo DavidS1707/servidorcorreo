@@ -21,22 +21,21 @@ import utils.DateString;
 public class DPago {
 
     private final SqlConnection connection;
-    public static final String[] HEADERS = {"id", "date", "type_payment"};
+    public static final String[] HEADERS = {"id", "type_payment", "phone", "customer_name", "customer_ci"};
 
     public DPago() {
         connection = new SqlConnection("grupo23sa", "grup023grup023*", "mail.tecnoweb.org.bo",
                 "5432", "db_grupo23sa");
     }
 
-    // id, date, type_payment, phone, customer_name, customer_ci
-    public void create(String date, int type_payment, String phone, String customer_name, String customer_ci) throws SQLException, ParseException {
-        String query = "INSERT INTO payments(date, type_payment) values(?,?)";
+    // id, type_payment, phone, customer_name, customer_ci
+    public void create(int type_payment, String phone, String customer_name, String customer_ci) throws SQLException, ParseException {
+        String query = "INSERT INTO payments(type_payment, phone, customer_name, customer_ci) values(?,?,?,?)";
         PreparedStatement ps = connection.connect().prepareStatement(query);
-        ps.setDate(1, (Date) DateString.StringToDateSQL(date));
-        ps.setInt(2, type_payment);
-        ps.setString(3, phone);
-        ps.setString(4, customer_name);
-        ps.setString(5, customer_ci);
+        ps.setInt(1, type_payment);
+        ps.setString(2, phone);
+        ps.setString(3, customer_name);
+        ps.setString(4, customer_ci);
 
         if (ps.executeUpdate() == 0) {
             System.err.print("Class DPago.java: Error al intentar crear un tipo de pago. create(). ");
@@ -44,15 +43,14 @@ public class DPago {
         }
     }
 
-    public void edit(int id, String date, int type_payment, String phone, String customer_name, String customer_ci) throws SQLException, ParseException {
-        String query = "UPDATE payments SET date=?, type_payment=? WHERE id=?";
+    public void edit(int id, int type_payment, String phone, String customer_name, String customer_ci) throws SQLException, ParseException {
+        String query = "UPDATE payments SET type_payment=?, phone=?, customer_name=?, customer_ci=? WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
-        ps.setDate(1, (Date) DateString.StringToDateSQL(date));
-        ps.setInt(2, type_payment);
-        ps.setString(3, phone);
-        ps.setString(4, customer_name);
-        ps.setString(5, customer_ci);
-        ps.setInt(6, id);
+        ps.setInt(1, type_payment);
+        ps.setString(2, phone);
+        ps.setString(3, customer_name);
+        ps.setString(4, customer_ci);
+        ps.setInt(5, id);
 
         if (ps.executeUpdate() == 0) {
             System.err.print("Class DPago.java: Error al intentar actualizar el tipo de pago. edit(). ");
@@ -78,13 +76,12 @@ public class DPago {
 
         List<String[]> Payments = new ArrayList<>();
         while (rs.next()) {
-            String[] payments = new String[3];
+            String[] payments = new String[6];
             payments[0] = String.valueOf(rs.getInt("id"));
-            payments[1] = rs.getString("date");
-            payments[2] = String.valueOf(rs.getInt("type_payment"));
-            payments[3] = rs.getString("phone");
-            payments[4] = rs.getString("customer_name");
-            payments[5] = rs.getString("customer_ci");
+            payments[1] = String.valueOf(rs.getInt("type_payment"));
+            payments[2] = rs.getString("phone");
+            payments[3] = rs.getString("customer_name");
+            payments[4] = rs.getString("customer_ci");
             Payments.add(payments);
         }
 

@@ -27,11 +27,11 @@ public class DSuscripcion {
     }
 
     // id, name, price, duration, description
-    public void create(String name, int price, int duration, String description) throws SQLException, ParseException {
+    public void create(String name, double price, int duration, String description) throws SQLException, ParseException {
         String query = "INSERT INTO subscriptions(name, price, description) values(?,?,?,?)";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, name);
-        ps.setInt(2, price);
+        ps.setDouble(2, price);
         ps.setInt(3, duration);
         ps.setString(4, description);
 
@@ -42,11 +42,11 @@ public class DSuscripcion {
     }
 
     // metodo para editar una suscripción
-    public void edit(int id, String name, int price, int duration, String description) throws SQLException {
+    public void edit(int id, String name, double price, int duration, String description) throws SQLException {
         String query = "UPDATE subscriptions SET name=?, price=?, duration=?, description=? WHERE id=?";
         PreparedStatement ps = connection.connect().prepareStatement(query);
         ps.setString(1, name);
-        ps.setInt(2, price);
+        ps.setDouble(2, price);
         ps.setInt(3, duration);
         ps.setString(4, description);
         ps.setInt(5, id);
@@ -80,7 +80,7 @@ public class DSuscripcion {
             String[] subscription = new String[5];
             subscription[0] = String.valueOf(rs.getInt("id"));
             subscription[1] = rs.getString("name");
-            subscription[2] = String.valueOf(rs.getInt("price"));
+            subscription[2] = String.valueOf(rs.getDouble("price"));
             subscription[3] = String.valueOf(rs.getInt("duration"));
             subscription[4] = rs.getString("description");
             subscriptions.add(subscription);
@@ -100,7 +100,7 @@ public class DSuscripcion {
             subscription = new String[5];
             subscription[0] = String.valueOf(rs.getInt("id"));
             subscription[1] = rs.getString("name");
-            subscription[2] = String.valueOf(rs.getInt("price"));
+            subscription[2] = String.valueOf(rs.getDouble("price"));
             subscription[3] = String.valueOf(rs.getInt("duration"));
             subscription[4] = rs.getString("description");
         }

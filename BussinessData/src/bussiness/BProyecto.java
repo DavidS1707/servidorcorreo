@@ -22,12 +22,12 @@ public class BProyecto {
     }
 
     public void create(List<String> parametros) throws SQLException {
-        dProyecto.create(parametros.get(0), parametros.get(1), parametros.get(2), parametros.get(3), "edition");
+        dProyecto.create(parametros.get(0), parametros.get(1), parametros.get(2), parametros.get(3));
         dProyecto.disconnect();
     }
 
     public void edit(List<String> parametros) throws SQLException {
-        dProyecto.edit(Integer.parseInt(parametros.get(0)), parametros.get(1), parametros.get(2), parametros.get(3), parametros.get(4), "edition");
+        dProyecto.edit(Integer.parseInt(parametros.get(0)), parametros.get(1), parametros.get(2), parametros.get(3), parametros.get(4), parametros.get(5));
         dProyecto.disconnect();
     }
 
